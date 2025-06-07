@@ -18,19 +18,20 @@ public class BaseClass
 	public WebDriver driver;
 	
 	@BeforeMethod
-	public void openApp() throws FileNotFoundException, IOException
+	public void openApp() throws FileNotFoundException, IOException, InterruptedException
 	{
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get("https://www.google.com");
+		Thread.sleep(10000);
 	}
 	
 	@AfterMethod
 	public void closeApp()
 	{
-		driver.quit();
+//		driver.quit();
 	}
 
 }
